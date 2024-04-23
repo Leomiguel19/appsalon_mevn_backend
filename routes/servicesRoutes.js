@@ -1,5 +1,5 @@
 import express from 'express'
-import { services } from '../data/beautyServices.js'
+import { services } from '../data/beautyServices.js '
 
 const router = express.Router()
 
