@@ -1,12 +1,24 @@
 import { services } from '../data/beautyServices.js'
+import Services from '../models/Services.js'
 
-const createService = (req, res) => {
+const createService = async (req, res) => {
     if(Object.values(req.body).includes('')){
         const error = new Error('Todos los campos son obligatorios')
         
         return res.status(400).json({
             msg: error.message
         })
+    }
+
+    try {
+        const service = new Services(req.body)
+        await service.save()
+
+        res.json({
+            msg: "El Servicio se creo correctamente"
+        })
+    } catch (error) {
+        console.error(error)
     }
 }
 
