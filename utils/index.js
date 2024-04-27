@@ -9,6 +9,14 @@ function validateObjectId(id, res){
     } 
 }
 
+function handleNotFoundError(message, res){
+    const error = new Error(message)
+    return res.status(404).json({
+        msg: error.message
+    })
+}
+
 export {
-    validateObjectId
+    validateObjectId,
+    handleNotFoundError
 }
