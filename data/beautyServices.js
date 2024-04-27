@@ -79,4 +79,4 @@ export const services = [
         name: 'Tratamientos de bronceado sin sol',
         price: 250
     }
-  ];
+];
