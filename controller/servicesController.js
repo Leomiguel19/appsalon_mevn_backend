@@ -65,9 +65,14 @@ const updateService = async (req, res) => {
     }
 }
 
+const deleteService = async (req, res) => {
+
+}
+
 export {
     getServices,
     createService,
     getServiceById,
-    updateService
+    updateService,
+    deleteService
 }
