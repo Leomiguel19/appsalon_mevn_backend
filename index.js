@@ -18,6 +18,7 @@ app.use(express.json())
 // Conectar a DB
 db()
 
+
 // Configurar CORS
 const whiteList = [process.env.FRONTEND_URL, undefined]
 
