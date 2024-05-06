@@ -15,9 +15,13 @@ const register = async (req, res) => {
         const error = new Error('Usuario ya registrado')
         return res.status(400).json({msg: error.message})
     }
-    
-    // Validar la extension del password
 
+    // Validar la extension del password
+    const MIN_PASSWORD_LENGTH = 8
+    if(password.trim().length < MIN_PASSWORD_LENGTH){
+        const error = new Error(`El password debe contener ${MIN_PASSWORD_LENGTH} caracteres minimo`)
+        return res.status(400).json({msg: error.message})
+    }
 
     try {
         const user = new User(req.body)
