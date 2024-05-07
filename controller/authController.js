@@ -1,4 +1,5 @@
 import User from "../models/User.js"
+import { sendEmailVerification } from "../emails/authEmailService.js"
 
 const register = async (req, res) => {
 
@@ -25,7 +26,10 @@ const register = async (req, res) => {
 
     try {
         const user = new User(req.body)
-        await user.save()
+        const result = await user.save()
+
+        const { name, email, token } = result
+        sendEmailVerification({ name, email, token })
 
         res.json({
             msg: 'El usuario se creo correctamente, revisa tu email'
