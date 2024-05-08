@@ -59,7 +59,23 @@ const verifyAccount = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    const { email, password } = req.body
+    // Revisar si el usuario existe
+    const user = await User.findOne({ email})
+    if(!user){
+        const error = new Error('El usuario NO existe')
+        return res.status(401).json({msg: error.message})
+    }
+    // Revisar si el usuario existe
+    if(!user.verified){
+        const error = new Error('Tu cuenta no ha sido confirmada aún')
+        return res.status(401).json({msg: error.message})
+    }
+}
+
 export {
     register,
-    verifyAccount
+    verifyAccount,
+    login,
 }
