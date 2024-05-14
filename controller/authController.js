@@ -90,7 +90,8 @@ const login = async (req, res) => {
 }
 
 const user = async (req, res) => {
-    console.log('Desde User')
+    const { user } = req
+    res.json( user )
 }
 
 export {
