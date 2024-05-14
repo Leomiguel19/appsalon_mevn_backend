@@ -1,9 +1,17 @@
+import jwt from 'jsonwebtoken'
+
 const authMiddleware = (req, res, next) => {
     
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
-        console.log('Si hay Token')
+        try {
+            const token = req.headers.authorization.split(' ')[1]
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            console.log(decoded)            
+        } catch {
+            const error = new Error('Token no valido')
+            res.status(403).json({msg: error.message})    
+        }
     }else{
-        console.log('NO hay Token')
         const error = new Error('Token no valido o inexistente')
         res.status(403).json({msg: error.message})
     }
