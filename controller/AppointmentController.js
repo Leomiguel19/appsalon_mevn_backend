@@ -1,3 +1,4 @@
+import { parse, formatISO } from 'date-fns'
 import Appointment from "../models/Appointment.js";
 
 const createAppointment = async (req, res) => {
@@ -15,6 +16,18 @@ const createAppointment = async (req, res) => {
     }
 }
 
+const getAppointmentByDate = async (req, res) => {
+    const { date } = req.query
+
+    console.log(date)
+
+    const newDate = parse(date, 'dd/MM/yyyy', new Date())
+    const isoDate = formatISO(newDate)
+
+    console.log(isoDate)
+}
+
 export {
-    createAppointment
+    createAppointment,
+    getAppointmentByDate
 }
