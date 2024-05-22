@@ -1,4 +1,4 @@
-import Appointment from "../models/Appointment"
+import Appointment from "../models/Appointment.js"
 
 const getUserAppointments = async (req, res) => {
     const { user } = req.params
