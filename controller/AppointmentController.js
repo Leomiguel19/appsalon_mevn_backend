@@ -36,7 +36,12 @@ const getAppointmentByDate = async (req, res) => {
     res.json(appointments)
 }
 
+const getAppointmentById = async (req, res) => {
+    console.log(req.params.id)
+}
+
 export {
     createAppointment,
-    getAppointmentByDate
+    getAppointmentByDate,
+    getAppointmentById
 }
