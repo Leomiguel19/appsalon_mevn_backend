@@ -75,6 +75,7 @@ const updateAppointment = async (req, res) => {
         return res.status(403).json({msg: error.message})
     }
 
+    
     const { date, time, totalAmount, services } = req.body
     appointment.date = date
     appointment.time = time
